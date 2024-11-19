@@ -1,0 +1,26 @@
+[Two Sum](https://leetcode.com/problems/two-sum/)
+
+```javascript
+var twoSum = function (nums, target) {
+  const hash = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    const val = target - nums[i];
+
+    if (val in hash) {
+      return [hash[val], i];
+    } else {
+      hash[nums[i]] = i;
+    }
+  }
+};
+```
+
+1. Создаем хэш-мапу
+2. Проходимся по массиву nums
+3. Для каждого элемента проверяем, есть ли в hashMap такое число, которое в сумме с текущим элементом даст target
+	1. Если да -- вернуть индексы текущего элемента и элемента из hashMap
+	2. Если нет -- то добавим элемент в hashMap
+4. Если все элементы пройдены, то вернуть пустой массив,  так как пара чисел не найдена	
+
+Этот алгоритм работает за линейное время `O(n)`, где `n` - количество элементов во входном массиве nums.
